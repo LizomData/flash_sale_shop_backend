@@ -1,0 +1,246 @@
+{
+	"_type": "Project",
+	"_id": "AAAAAAFF+h6SjaM2Hec=",
+	"name": "Untitled",
+	"ownedElements": [
+		{
+			"_type": "UMLModel",
+			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Model",
+			"ownedElements": [
+				{
+					"_type": "UMLClassDiagram",
+					"_id": "AAAAAAFF+qBtyKM79qY=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "Main",
+					"defaultDiagram": true
+				}
+			]
+		},
+		{
+			"_type": "UMLCollaboration",
+			"_id": "AAAAAAGa7T/Ajz4Esz0=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Collaboration1",
+			"ownedElements": [
+				{
+					"_type": "UMLInteraction",
+					"_id": "AAAAAAGa7T/AkD4FYOE=",
+					"_parent": {
+						"$ref": "AAAAAAGa7T/Ajz4Esz0="
+					},
+					"name": "Interaction1",
+					"ownedElements": [
+						{
+							"_type": "UMLSequenceDiagram",
+							"_id": "AAAAAAGa7T/AkD4GFXU=",
+							"_parent": {
+								"$ref": "AAAAAAGa7T/AkD4FYOE="
+							},
+							"name": "SequenceDiagram1",
+							"ownedViews": [
+								{
+									"_type": "UMLFrameView",
+									"_id": "AAAAAAGa7T/AkD4HFr4=",
+									"_parent": {
+										"$ref": "AAAAAAGa7T/AkD4GFXU="
+									},
+									"model": {
+										"$ref": "AAAAAAGa7T/AkD4GFXU="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGa7T/AkD4IGw8=",
+											"_parent": {
+												"$ref": "AAAAAAGa7T/AkD4HFr4="
+											},
+											"font": "Arial;13;0",
+											"left": 32.72998046875,
+											"top": 13,
+											"width": 115.9052734375,
+											"height": 13,
+											"text": "SequenceDiagram1"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGa7T/AkD4Jo4U=",
+											"_parent": {
+												"$ref": "AAAAAAGa7T/AkD4HFr4="
+											},
+											"font": "Arial;13;1",
+											"left": 13,
+											"top": 13,
+											"width": 14.72998046875,
+											"height": 13,
+											"text": "sd"
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 8,
+									"top": 8,
+									"width": 692,
+									"height": 592,
+									"nameLabel": {
+										"$ref": "AAAAAAGa7T/AkD4IGw8="
+									},
+									"frameTypeLabel": {
+										"$ref": "AAAAAAGa7T/AkD4Jo4U="
+									}
+								},
+								{
+									"_type": "UMLSeqLifelineView",
+									"_id": "AAAAAAGa7T/xsj4Vvcs=",
+									"_parent": {
+										"$ref": "AAAAAAGa7T/AkD4GFXU="
+									},
+									"model": {
+										"$ref": "AAAAAAGa7T/xsj4U26Q="
+									},
+									"subViews": [
+										{
+											"_type": "UMLNameCompartmentView",
+											"_id": "AAAAAAGa7T/xsj4WWco=",
+											"_parent": {
+												"$ref": "AAAAAAGa7T/xsj4Vvcs="
+											},
+											"model": {
+												"$ref": "AAAAAAGa7T/xsj4U26Q="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGa7T/xsj4XhE0=",
+													"_parent": {
+														"$ref": "AAAAAAGa7T/xsj4WWco="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 96,
+													"height": 13
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGa7T/xsj4YB3U=",
+													"_parent": {
+														"$ref": "AAAAAAGa7T/xsj4WWco="
+													},
+													"font": "Arial;13;1",
+													"left": 53,
+													"top": 47,
+													"width": 88,
+													"height": 13,
+													"text": "酒店工作人员"
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGa7T/xsj4ZO7A=",
+													"_parent": {
+														"$ref": "AAAAAAGa7T/xsj4WWco="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 96,
+													"width": 106.20263671875,
+													"height": 13,
+													"text": "(from Interaction1)"
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAGa7T/xsj4aMD0=",
+													"_parent": {
+														"$ref": "AAAAAAGa7T/xsj4WWco="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 96,
+													"height": 13,
+													"horizontalAlignment": 1
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 48,
+											"top": 40,
+											"width": 98,
+											"height": 40,
+											"stereotypeLabel": {
+												"$ref": "AAAAAAGa7T/xsj4XhE0="
+											},
+											"nameLabel": {
+												"$ref": "AAAAAAGa7T/xsj4YB3U="
+											},
+											"namespaceLabel": {
+												"$ref": "AAAAAAGa7T/xsj4ZO7A="
+											},
+											"propertyLabel": {
+												"$ref": "AAAAAAGa7T/xsj4aMD0="
+											}
+										},
+										{
+											"_type": "UMLLinePartView",
+											"_id": "AAAAAAGa7T/xsj4bCww=",
+											"_parent": {
+												"$ref": "AAAAAAGa7T/xsj4Vvcs="
+											},
+											"model": {
+												"$ref": "AAAAAAGa7T/xsj4U26Q="
+											},
+											"font": "Arial;13;0",
+											"left": 97,
+											"top": 80,
+											"width": 1,
+											"height": 160
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 48,
+									"top": 40,
+									"width": 98,
+									"height": 200,
+									"nameCompartment": {
+										"$ref": "AAAAAAGa7T/xsj4WWco="
+									},
+									"linePart": {
+										"$ref": "AAAAAAGa7T/xsj4bCww="
+									}
+								}
+							]
+						}
+					],
+					"participants": [
+						{
+							"_type": "UMLLifeline",
+							"_id": "AAAAAAGa7T/xsj4U26Q=",
+							"_parent": {
+								"$ref": "AAAAAAGa7T/AkD4FYOE="
+							},
+							"name": "酒店工作人员",
+							"represent": {
+								"$ref": "AAAAAAGa7T/xsT4Tp90="
+							},
+							"isMultiInstance": false
+						}
+					]
+				}
+			],
+			"attributes": [
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGa7T/xsT4Tp90=",
+					"_parent": {
+						"$ref": "AAAAAAGa7T/Ajz4Esz0="
+					},
+					"name": "Role1",
+					"type": ""
+				}
+			]
+		}
+	]
+}
