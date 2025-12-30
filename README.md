@@ -3,10 +3,10 @@
 Spring Boot 3.2 后端，基于 MySQL + MyBatis，为前端秒杀商城提供 REST API、登录/注册、秒杀、购物车、订单及管理员配置秒杀与商品。
 
 ## ✨ 功能
-- 🔐 认证：手机号+密码注册/登录，返回 Bearer token
+- 🔐 认证：手机号+密码注册/登录，JWT Bearer token；拦截器统一校验
 - 🛍️ 商城：商品查询、购物车添加/结算、订单生成
 - ⚡ 秒杀：限购校验、库存扣减、秒杀下单
-- 🛠️ 管理：创建秒杀活动、添加商品（内存存储，重启重置）
+- 🛠️ 管理：创建秒杀活动、添加商品（MySQL 持久化）
 
 ## 🧰 技术栈
 - Spring Boot 3.2、MyBatis、MySQL、Spring Web、Validation、Lombok
@@ -18,7 +18,7 @@ Spring Boot 3.2 后端，基于 MySQL + MyBatis，为前端秒杀商城提供 RE
 CREATE DATABASE IF NOT EXISTS flashsale_shop DEFAULT CHARSET utf8mb4;
 ```
 
-2) 修改配置 `src/main/resources/application.properties` 中的数据库账号密码。
+2) 修改配置 `src/main/resources/application.properties` 中的数据库账号密码与 JWT 密钥。
 
 3) 启动后端  
 ```bash
@@ -35,6 +35,9 @@ cd flashsaleshop_backend
 - `POST /api/orders/checkout`：结算
 - 管理员：`POST /api/admin/seckills` 创建秒杀，`POST /api/admin/products` 创建商品
 
+## 👑 默认账号
+- 管理员：手机号 `18800000000`，密码 `123456`，昵称 `admin`
+
 ## 🧪 开发脚本
 - `./mvnw spring-boot:run` 运行
 - `./mvnw test` 测试
@@ -48,4 +51,5 @@ cd flashsaleshop_backend
 
 ## 📝 提示
 - 生产建议补充缓存、限流/排队与更完善的鉴权策略。
+- JWT 密钥位于 `application.properties`，可用环境变量覆盖：`JWT_SECRET`、`JWT_EXPIRATION_SECONDS`。
 - 若需调整跨域或端口，可修改 `application.properties` 与 `WebConfig`。

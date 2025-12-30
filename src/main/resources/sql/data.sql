@@ -1,5 +1,5 @@
 INSERT INTO user_account (id, name, phone, password, role, balance)
-VALUES (1, '小明', '18800000000', '123456', 'admin', 2000.00)
+VALUES (1, 'admin', '18800000000', '123456', 'admin', 2000.00)
 ON DUPLICATE KEY UPDATE name = VALUES(name), password = VALUES(password), role = VALUES(role), balance = VALUES(balance);
 
 INSERT INTO product (id, name, description, tag, price, stock)
