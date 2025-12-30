@@ -21,6 +21,7 @@ import com.flashsaleshop.model.Product;
 import com.flashsaleshop.model.SeckillEvent;
 import com.flashsaleshop.model.UserAccount;
 import com.flashsaleshop.model.UserProfile;
+import com.flashsaleshop.security.JwtUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +36,6 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class StoreService {
@@ -46,21 +46,23 @@ public class StoreService {
     private final CartMapper cartMapper;
     private final OrderMapper orderMapper;
     private final OrderItemMapper orderItemMapper;
-    private final Map<String, Long> tokens = new ConcurrentHashMap<>();
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private final JwtUtil jwtUtil;
 
     public StoreService(UserMapper userMapper,
                         ProductMapper productMapper,
                         SeckillEventMapper seckillEventMapper,
                         CartMapper cartMapper,
                         OrderMapper orderMapper,
-                        OrderItemMapper orderItemMapper) {
+                        OrderItemMapper orderItemMapper,
+                        JwtUtil jwtUtil) {
         this.userMapper = userMapper;
         this.productMapper = productMapper;
         this.seckillEventMapper = seckillEventMapper;
         this.cartMapper = cartMapper;
         this.orderMapper = orderMapper;
         this.orderItemMapper = orderItemMapper;
+        this.jwtUtil = jwtUtil;
     }
 
     public AuthResponse register(RegisterRequest request) {
@@ -70,7 +72,7 @@ public class StoreService {
         UserAccount account = new UserAccount(null, request.getName(), request.getPhone(), request.getPassword(), "user",
                 new BigDecimal("0"));
         userMapper.insert(account);
-        String token = issueToken(account.getId());
+        String token = jwtUtil.generateToken(account.getId());
         return new AuthResponse(token, toProfile(account));
     }
 
@@ -82,7 +84,7 @@ public class StoreService {
         if (!user.getPassword().equals(request.getPassword())) {
             throw new BusinessException(HttpStatus.UNAUTHORIZED, "手机号或密码错误");
         }
-        String token = issueToken(user.getId());
+        String token = jwtUtil.generateToken(user.getId());
         return new AuthResponse(token, toProfile(user));
     }
 
@@ -277,11 +279,11 @@ public class StoreService {
             throw new BusinessException(HttpStatus.UNAUTHORIZED, "未登录");
         }
         String token = authHeader.replace("Bearer", "").trim();
-        Long uid = tokens.get(token);
-        if (uid == null) {
+        try {
+            return jwtUtil.parseUserId(token);
+        } catch (Exception ex) {
             throw new BusinessException(HttpStatus.UNAUTHORIZED, "登录已失效，请重新登录");
         }
-        return uid;
     }
 
     private SnapshotResponse buildSnapshot(long userId, String message) {
@@ -314,12 +316,6 @@ public class StoreService {
     private String productName(Long productId) {
         Product product = productMapper.findById(productId);
         return product != null ? product.getName() : "";
-    }
-
-    private String issueToken(Long userId) {
-        String token = UUID.randomUUID().toString();
-        tokens.put(token, userId);
-        return token;
     }
 
     private UserProfile toProfile(UserAccount account) {

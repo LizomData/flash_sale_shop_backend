@@ -28,7 +28,7 @@ cd flashsaleshop_backend
 默认端口 `8080`，启动时会自动执行 `src/main/resources/sql/schema.sql` 与 `data.sql` 初始化表结构与演示数据。
 
 ## 🔑 重要接口
-- `POST /api/auth/register`、`POST /api/auth/login`：注册/登录，返回 `{ token, user }`
+- `POST /api/auth/register`、`POST /api/auth/login`：注册/登录，返回 `{ token, user }`（JWT）
 - `GET /api/bootstrap`：返回用户、商品、秒杀、购物车、订单快照（需 `Authorization: Bearer <token>`）
 - `POST /api/seckills/{id}/buy`：秒杀下单
 - `POST /api/cart`：加购（普通/秒杀）
