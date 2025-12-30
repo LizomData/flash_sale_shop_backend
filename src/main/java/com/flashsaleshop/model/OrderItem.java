@@ -12,9 +12,9 @@ import java.math.BigDecimal;
 public class OrderItem {
     private String key;
     private Long productId;
+    private String eventId;
     private String name;
     private String type;
     private BigDecimal price;
     private int qty;
 }
-
