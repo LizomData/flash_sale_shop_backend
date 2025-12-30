@@ -27,13 +27,19 @@ cd flashsaleshop_backend
 ```
 默认端口 `8080`，启动时会自动执行 `src/main/resources/sql/schema.sql` 与 `data.sql` 初始化表结构与演示数据。
 
-## 🔑 重要接口
-- `POST /api/auth/register`、`POST /api/auth/login`：注册/登录，返回 `{ token, user }`（JWT）
-- `GET /api/bootstrap`：返回用户、商品、秒杀、购物车、订单快照（需 `Authorization: Bearer <token>`）
-- `POST /api/seckills/{id}/buy`：秒杀下单
-- `POST /api/cart`：加购（普通/秒杀）
-- `POST /api/orders/checkout`：结算
-- 管理员：`POST /api/admin/seckills` 创建秒杀，`POST /api/admin/products` 创建商品
+## 🔑 接口一览
+| 方法 | 路径 | 说明 | 鉴权 |
+| --- | --- | --- | --- |
+| POST | `/api/auth/register` | 注册，返回 `{ token, user }`（JWT） | 否 |
+| POST | `/api/auth/login` | 登录，返回 `{ token, user }`（JWT） | 否 |
+| GET | `/api/bootstrap` | 获取用户/商品/秒杀/购物车/订单快照 | 是（Bearer Token） |
+| GET | `/api/products` | 获取商品列表 | 是（Bearer Token） |
+| GET | `/api/seckills` | 获取秒杀活动列表 | 是（Bearer Token） |
+| POST | `/api/seckills/{eventId}/buy` | 秒杀下单 | 是（Bearer Token） |
+| POST | `/api/cart` | 添加购物车（普通/秒杀） | 是（Bearer Token） |
+| POST | `/api/orders/checkout` | 结算并生成订单 | 是（Bearer Token） |
+| POST | `/api/admin/seckills` | 创建秒杀活动 | 是（Bearer Token） |
+| POST | `/api/admin/products` | 创建商品 | 是（Bearer Token） |
 
 ## 👑 默认账号
 - 管理员：手机号 `18800000000`，密码 `123456`，昵称 `admin`
